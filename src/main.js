@@ -5,6 +5,8 @@ import Users from './Users.vue'
 import Home from './Home.vue'
 import Graph from './Graphs.vue'
 
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,21 +21,11 @@ const router = new VueRouter({
     mode: 'history'
 });
 
+
+
+
 new Vue({
     el: '#app',
-    fetchData(){
-        this.$http.get('./users.json', {
-            params: {
-                ID: 12345
-            }
-        })
-            .then(function(response) {
-                console.log(response);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    },
     router,
     render: h => h(App)
 });
