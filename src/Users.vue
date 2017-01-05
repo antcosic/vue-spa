@@ -1,27 +1,8 @@
 <template>
-    <div>
-        <h2>Users</h2>
-        <p> boja </p>
-        <h2>Orders</h2>
-        <div v-for="i in [100,101,102,103]">
-            <p>
-                <button @click="showModal(i)">
-                    Order #{{ i }} Modal
-                </button>
-            </p>
-        </div>
+    <div class="container">
+        <h2>USERS</h2>
         <modal-comment :config="modalConfig"></modal-comment>
-
-        <table>
-            <tr>
-                <td> Antonio Ćosić </td>
-                <td> Nova ulica 8 </td>
-                <td> antcosic@foi.hr </td>
-            </tr>
-        </table>
-        <button @click="fetchData">Fetch users</button>
-        <button @click="ispisUsers">Ispis</button>
-        <div class='container'>
+        <div>
             <table class="responstable">
                 <tr>
                     <th>Id</th>
@@ -38,31 +19,25 @@
                     <td>{{ user.email}}</td>
                     <td>{{ user.address.street}}</td>
                     <td>
-                        <button @click="showModal(user.name, user.username, user.email, user.address.street,
+                        <button class="myButton" @click="showModal(user.name, user.username, user.email, user.address.street,
                                                   user.address.suite, user.address.city, user.address.zipcode,
                                                   user.address.geo.lat, user.address.geo.lng)">
-                            Details about {{user.name}}
+                            More
                         </button>
                     </td>
                 </tr>
-
             </table>
-
-
         </div>
-
-
     </div>
-
 </template>
 
 
 <script>
     import Vue from 'vue';
     import axios from 'axios';
-
     import Modal from './Modal.vue';
     import ModalComment from './ModalComment.vue';
+
     export default{
         data(){
             return{
@@ -82,6 +57,11 @@
                 }
             }
         },
+
+        created(){
+            this.fetchData();
+        },
+
         methods: {
 
             fetchData(){
@@ -95,13 +75,7 @@
                             console.log(error);
                         });
             },
-            ispisUsers(){
-            var self = this;
-                for(var i = 0; i < this.users.length; i++) {
-                    var obj = this.users[i];
-                    console.log(obj.name);
-                }
-            },
+
             showModal(name, username, email, street, suite, city, zipcode, lng, lat){
                 this.modalConfig.name = name;
                 this.modalConfig.username = username;
@@ -115,13 +89,13 @@
                 this.modalConfig.show = true;
             }
         },
+
         components: {
             'modal': Modal,
             'modal-comment': ModalComment
         }
     }
 </script>
-
 
 <style lang="less" scoped>
     @import './users';

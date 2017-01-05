@@ -1,13 +1,20 @@
 @color_1: #024457;
 @color_2: #FFF;
 @color_3: #167F92;
+@color_4: #ffffff;
 @font_family_1: Arial, sans-serif;
 @font_family_2: Verdana;
-@background_color_1: #EAF3F3;
-@background_color_2: #167F92;
+@font_family_3: Arial;
+@background_color_1: sandybrown;
+@background_color_2: #EAF3F3;
+@background_color_3: #167F92;
+@background_color_4: #e4685d;
+@background_color_5: #eb675e;
 
 .container {
   width: 100%;
+  background-color: @background_color_1;
+  padding: 3px;
 }
 .responstable {
   margin: 1em 0;
@@ -20,16 +27,16 @@
   tr {
     border: 1px solid #D9E4E6;
     &:nth-child(odd) {
-      background-color: @background_color_1;
+      background-color: @background_color_2;
     }
   }
   th {
     display: none;
     border: 1px solid #FFF;
-    background-color: @background_color_2;
+    background-color: @background_color_3;
     color: @color_2;
     padding: 1em;
-    text-align: left;
+    text-align: center;
     margin: .5em 1em;
     &:first-child {
       display: table-cell;
@@ -72,9 +79,42 @@ h1 {
     color: @color_3;
   }
 }
+h2 {
+  font-family: @font_family_2;
+  font-weight: bold;
+  color: @color_2;
+  text-align: center;
+}
+.myButton {
+  -moz-box-shadow: inset 0px 39px 0px -24px #e67a73;
+  -webkit-box-shadow: inset 0px 39px 0px -24px #e67a73;
+  box-shadow: inset 0px 39px 0px -24px #e67a73;
+  background-color: @background_color_4;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+  display: inline-block;
+  cursor: pointer;
+  color: @color_4;
+  font-family: @font_family_3;
+  font-size: 15px;
+  padding: 6px 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #b23e35;
+  &:hover {
+    background-color: @background_color_5;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}
 @media (min-width: 480px) {
   .responstable {
     th {
+      display: table-cell;
+      padding: 1em;
       &:nth-child(2) {
         span {
           display: block;
@@ -83,8 +123,6 @@ h1 {
           display: none;
         }
       }
-      display: table-cell;
-      padding: 1em;
     }
     td {
       border: 1px solid #D9E4E6;

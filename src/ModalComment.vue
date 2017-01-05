@@ -3,7 +3,7 @@
         <modal :config="config">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h3>Name: {{ config.name }}</h3>
+                <h3> {{ config.name }}</h3>
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
@@ -26,12 +26,12 @@
             </div>
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <button @click="save()">Close</button>
+                <button class="myButton" @click="save()">Close</button>
             </div>
         </modal>
 </template>
 <style>
-
+@import './modalBody.less';
 </style>
 <script>
     import Modal from './Modal.vue'
