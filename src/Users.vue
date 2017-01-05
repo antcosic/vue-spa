@@ -29,6 +29,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>Details</th>
                 </tr>
                 <tr v-for="user in users">
                     <td>{{ user.id }}</td>
@@ -37,7 +38,9 @@
                     <td>{{ user.email}}</td>
                     <td>{{ user.address.street}}</td>
                     <td>
-                        <button @click="showModal(user.name, user.username)">
+                        <button @click="showModal(user.name, user.username, user.email, user.address.street,
+                                                  user.address.suite, user.address.city, user.address.zipcode,
+                                                  user.address.geo.lat, user.address.geo.lng)">
                             Details about {{user.name}}
                         </button>
                     </td>
@@ -64,10 +67,18 @@
         data(){
             return{
                 users: [],
-                 modalConfig: {
+                modalConfig: {
                     show: false,
-                    ordernumber: null,
-                    username: null
+                    name: null,
+                    username: null,
+                    email: null,
+                    street: null,
+                    suite: null,
+                    city: null,
+                    zipcode: null,
+                    lat: null,
+                    lng: null
+
                 }
             }
         },
@@ -91,9 +102,16 @@
                     console.log(obj.name);
                 }
             },
-            showModal(name, username ){
+            showModal(name, username, email, street, suite, city, zipcode, lng, lat){
                 this.modalConfig.name = name;
                 this.modalConfig.username = username;
+                this.modalConfig.email = email;
+                this.modalConfig.street = street;
+                this.modalConfig.suite = suite;
+                this.modalConfig.city = city;
+                this.modalConfig.zipcode = zipcode;
+                this.modalConfig.lat = lat;
+                this.modalConfig.lng = lng;
                 this.modalConfig.show = true;
             }
         },

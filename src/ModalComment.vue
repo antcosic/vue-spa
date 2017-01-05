@@ -7,15 +7,22 @@
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
-                <form>
-                    <p>
-                        <label>Order Details</label>
-                        <textarea rows="5">
-                            {{ config.name }}
-                            {{ config.username }}
-                        </textarea>
-                    </p>
-                </form>
+                <hr>
+                <label>Other details:</label>
+                <p>Username: {{ config.username }} </p>
+                <p>Email: {{ config.email }} </p>
+                <dl>
+                    <dt>Adress:</dt>
+                    <dd>Street: {{ config.street}}</dd>
+                    <dd>Suite: {{ config.suite}}</dd>
+                    <dd>City: {{ config.city}}</dd>
+                    <dd>Zipcode: {{ config.zipcode}}</dd>
+                    <dt>Location:</dt>
+                    <dd>Lat: {{ config.lat}}</dd>
+                    <dd>Lng: {{ config.lng}}</dd>
+                </dl>
+                <hr>
+
             </div>
             <!-- Modal Footer -->
             <div class="modal-footer">
@@ -29,7 +36,16 @@
 <script>
     import Modal from './Modal.vue'
     export default{
-        props: ['config', 'name', 'username'],
+        props: ['config',
+                'name',
+                'username',
+                'email',
+                'street',
+                'suite',
+                'city',
+                'zipcode',
+                'lat',
+                'lng'],
         components: {
             'modal': Modal,
         },
