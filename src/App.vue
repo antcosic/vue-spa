@@ -1,12 +1,16 @@
 <template>
 
   <div id="app">
-    <h1>Lets go somewhere!</h1>
+    <h1>SPA</h1>
     <hr>
-    <router-link to="/">Home</router-link>
-    <router-link to="/users">Users</router-link>
-    <router-link to="/graphs">Graphs</router-link>
+    <div id="menuRow">
+      <div id="menuItem1"> <router-link class="a" to="/"><p>Home</p></router-link> </div>
+      <div id="menuItem2"> <router-link class="a" to="/users"><p>Users</p></router-link> </div>
+      <div id="menuItem3"> <router-link class="a" to="/graphs"><p>Graphs</p></router-link> </div>
+    </div>
     <hr>
+
+
     <router-view></router-view>
   </div>
 </template>
@@ -26,6 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+  @import './app';
 
 </style>
