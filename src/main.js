@@ -5,8 +5,6 @@ import Users from './Users.vue'
 import Home from './Home.vue'
 import Graph from './Graphs.vue'
 
-
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -20,8 +18,6 @@ const router = new VueRouter({
     routes,
     mode: 'history'
 });
-
-
 
 
 new Vue({
