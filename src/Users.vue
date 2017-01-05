@@ -2,6 +2,15 @@
     <div>
         <h2>Users</h2>
         <p> boja </p>
+        <button id="show-modal" @click="showModal = true">Show Modal</button>
+        <!-- use the modal component, pass in the prop -->
+        <modal v-if="showModal" @close="showModal = false">
+            <!--
+              you can use custom content here to overwrite
+              default content
+            -->
+            <h3 slot="header">Antonio Ćosić</h3>
+        </modal>
         <table>
             <tr>
                 <td> Antonio Ćosić </td>
@@ -20,12 +29,23 @@
                     <th>Email</th>
                     <th>Address</th>
                 </tr>
-                <tr id="myBtn" v-for="user in users">
+                <tr v-for="user in users">
                     <td>{{ user.id }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.username }}</td>
                     <td>{{ user.email}}</td>
                     <td>{{ user.address.street}}</td>
+                    <td>
+                        <button id="show-modal" @click="showModal = true">Show Modal</button>
+                        <!-- use the modal component, pass in the prop -->
+                        <modal v-if="showModal" @close="showModal = false">
+                            <!--
+                              you can use custom content here to overwrite
+                              default content
+                            -->
+                            <h3 slot="header">{{user.name}}</h3>
+                        </modal>
+                    </td>
                 </tr>
 
             </table>
@@ -41,12 +61,14 @@
 
 <script>
     import Vue from 'vue';
-
     import axios from 'axios';
+
+    import Modal from './Modal.vue';
     export default{
         data(){
             return{
-                users: []
+                users: [],
+                showModal: false
             }
         },
         methods: {
@@ -70,6 +92,9 @@
                 }
             }
         },
+        components: {
+            'modal': Modal
+        }
     }
 </script>
 

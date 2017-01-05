@@ -19,9 +19,9 @@ const router = new VueRouter({
     mode: 'history'
 });
 
-
 new Vue({
     el: '#app',
     router,
+
     render: h => h(App)
 });

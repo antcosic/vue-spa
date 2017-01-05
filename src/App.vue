@@ -2,7 +2,6 @@
 
   <div id="app">
     <h1>Lets go somewhere!</h1>
-
     <hr>
     <router-link to="/">Home</router-link>
     <router-link to="/users">Users</router-link>
