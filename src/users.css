@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  background-color: sandybrown;
+  background-color: orange;
   margin: 0px;
   position: absolute;
 }
@@ -23,7 +23,7 @@
   display: none;
   border: 1px solid #FFF;
   background-color: #167F92;
-  color: #FFF;
+  color: #ffffff;
   padding: 1em;
   text-align: center;
   margin: .5em 1em;
@@ -70,7 +70,7 @@ h1 span {
 h2 {
   font-family: Verdana;
   font-weight: bold;
-  color: #FFF;
+  color: darkred;
   text-align: center;
   padding-top: 20px;
 }

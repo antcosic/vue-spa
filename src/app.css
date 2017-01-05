@@ -50,9 +50,24 @@ h1 {
   text-align: center;
   color: azure;
 }
-a:link,
-a:hover,
-a:active,
+a:link {
+  text-decoration: none;
+  color: #EAF3F3;
+  font-family: "Arial Black";
+  width: 100%;
+}
+a:hover {
+  text-decoration: none;
+  color: #EAF3F3;
+  font-family: "Arial Black";
+  width: 100%;
+}
+a:active {
+  text-decoration: none;
+  color: #EAF3F3;
+  font-family: "Arial Black";
+  width: 100%;
+}
 a:visited {
   text-decoration: none;
   color: #EAF3F3;
