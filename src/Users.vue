@@ -2,15 +2,16 @@
     <div>
         <h2>Users</h2>
         <p> boja </p>
-        <button id="show-modal" @click="showModal = true">Show Modal</button>
-        <!-- use the modal component, pass in the prop -->
-        <modal v-if="showModal" @close="showModal = false">
-            <!--
-              you can use custom content here to overwrite
-              default content
-            -->
-            <h3 slot="header">Antonio Ćosić</h3>
-        </modal>
+        <h2>Orders</h2>
+        <div v-for="i in [100,101,102,103]">
+            <p>
+                <button @click="showModal(i)">
+                    Order #{{ i }} Modal
+                </button>
+            </p>
+        </div>
+        <modal-comment :config="modalConfig"></modal-comment>
+
         <table>
             <tr>
                 <td> Antonio Ćosić </td>
@@ -36,15 +37,9 @@
                     <td>{{ user.email}}</td>
                     <td>{{ user.address.street}}</td>
                     <td>
-                        <button id="show-modal" @click="showModal = true">Show Modal</button>
-                        <!-- use the modal component, pass in the prop -->
-                        <modal v-if="showModal" @close="showModal = false">
-                            <!--
-                              you can use custom content here to overwrite
-                              default content
-                            -->
-                            <h3 slot="header">{{user.name}}</h3>
-                        </modal>
+                        <button @click="showModal(user.name, user.username)">
+                            Details about {{user.name}}
+                        </button>
                     </td>
                 </tr>
 
@@ -64,11 +59,16 @@
     import axios from 'axios';
 
     import Modal from './Modal.vue';
+    import ModalComment from './ModalComment.vue';
     export default{
         data(){
             return{
                 users: [],
-                showModal: false
+                 modalConfig: {
+                    show: false,
+                    ordernumber: null,
+                    username: null
+                }
             }
         },
         methods: {
@@ -90,10 +90,16 @@
                     var obj = this.users[i];
                     console.log(obj.name);
                 }
+            },
+            showModal(name, username ){
+                this.modalConfig.name = name;
+                this.modalConfig.username = username;
+                this.modalConfig.show = true;
             }
         },
         components: {
-            'modal': Modal
+            'modal': Modal,
+            'modal-comment': ModalComment
         }
     }
 </script>
