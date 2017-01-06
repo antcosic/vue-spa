@@ -3,6 +3,7 @@
                 <form id="search">
                         Search <input name="query" v-model="searchQuery">
                 </form>
+
                 <demo-grid
                         :data="gridData"
                         :columns="gridColumns"
@@ -22,8 +23,10 @@
                 data() {
                         return {
                                 searchQuery: '',
+                                searchQuery2: '',
                                 gridColumns: ['userId','id', 'title', 'body'],
                                 gridData: []
+
                         }
                 },
                 created(){

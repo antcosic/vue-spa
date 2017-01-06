@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<style>
+<style lang="less" scoped>
 @import './modal.less';
 </style>
 

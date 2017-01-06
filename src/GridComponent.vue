@@ -10,13 +10,19 @@
                     <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
                     </span>
                 </th>
+                <th> Actions </th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="entry in filteredData">
+            <tr v-for="(entry, index) in filteredData">
                 <td v-for="key in columns">
                     {{entry[key]}}
                 </td>
+                <td>
+                    <button @click="removeRow(index)">Remove</button>
+                    <button>Edit</button>
+                </td>
+
             </tr>
             </tbody>
         </table>
@@ -84,12 +90,14 @@ th.active .arrow {
 }
 </style>
 <script>
+import axios from 'axios';
 
     export default{
         props: {
             data: Array,
             columns: Array,
             filterKey: String
+
           },
           data: function () {
             var sortOrders = {}
@@ -97,6 +105,7 @@ th.active .arrow {
               sortOrders[key] = 1
             })
             return {
+              record: {},
               sortKey: '',
               sortOrders: sortOrders
             }
@@ -114,6 +123,7 @@ th.active .arrow {
                   })
                 })
               }
+
               if (sortKey) {
                 data = data.slice().sort(function (a, b) {
                   a = a[sortKey]
@@ -130,10 +140,19 @@ th.active .arrow {
             }
           },
           methods: {
+          ispis(row){
+            console.log(row);
+          },
+            removeRow: function (index) {
+                this.data.splice(index, 1);
+                console.log(index);
+            },
             sortBy: function (key) {
               this.sortKey = key
               this.sortOrders[key] = this.sortOrders[key] * -1
             }
+
+            }
           }
-    }
+
 </script>
