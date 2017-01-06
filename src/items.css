@@ -49,3 +49,23 @@ th.active .arrow {
   border-right: 4px solid transparent;
   border-top: 4px solid #fff;
 }
+ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+ul.pagination li {
+  display: inline;
+}
+.button {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  margin: 5px;
+  text-decoration: none;
+}
+.pagMenu {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}

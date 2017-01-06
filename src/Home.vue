@@ -1,8 +1,11 @@
 <template>
         <div>
-                <form id="search">
-                        Search <input name="query" v-model="searchQuery">
-                </form>
+                <div class="pagMenu">
+                        <form id="search">
+                                Search <input name="query" v-model="searchQuery">
+                        </form>
+                </div>
+
 
                 <demo-grid
                         :data="gridData"
@@ -12,10 +15,11 @@
         </div>
 </template>
 
-<style>
-
+<style scoped>
+        @import './items.less';
 </style>
 <script>
+
         import GridComponent from './GridComponent.vue';
         import axios from 'axios';
         import Vue from 'vue';

@@ -9,6 +9,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "d3": "^4.4.0",
+    "nvd3": "github:novus/nvd3",
     "vue": "^2.1.0",
     "vue-bootstrap-pagination": "^2.10.2",
     "vue-router": "^2.1.1",
@@ -27,6 +29,7 @@
     "file-loader": "^0.9.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "nvd3": "github:novus/nvd3",
     "style-loader": "^0.13.1",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.0",
