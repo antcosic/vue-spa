@@ -5,8 +5,10 @@
   position: absolute;
 }
 .responstable {
-  margin: 1em 0;
-  width: 100%;
+  table-layout: fixed;
+  padding: 10px;
+  margin: 0 auto;
+  width: 95%;
   overflow: hidden;
   background: #FFF;
   color: #024457;
@@ -49,6 +51,11 @@
   margin: .5em 1em;
 }
 .responstable td:first-child {
+  display: table-cell;
+  text-align: center;
+  border-right: 1px solid #D9E4E6;
+}
+.responstable td:last-child {
   display: table-cell;
   text-align: center;
   border-right: 1px solid #D9E4E6;

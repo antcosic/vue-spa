@@ -2,7 +2,7 @@
     <div class="container">
         <h2>USERS</h2>
         <modal-comment :config="modalConfig"></modal-comment>
-        <div>
+        <div class="container">
             <table class="responstable">
                 <tr>
                     <th>Id</th>
