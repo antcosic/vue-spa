@@ -1,21 +1,34 @@
 <template>
-        <div>
-                <div class="pagMenu">
-                        <form id="search1">
-                                Search by UserId: <input name="query1" v-model="searchQuery">
-                        </form>
+        <div class="homeContainer">
+                <h2 class="h2"> STORE WITH ITEMS</h2>
+                <div class="menuRow">
+                        <div class="menuItems">
+                                <p class="p1">Search by UserId: </p>
+                                <textarea class="filter" name="query1" v-model="searchQuery">
 
-                        <form id="search2">
-                                Search by Id: <input name="query2" v-model="searchQuery2">
-                        </form>
+                        </div>
 
-                        <form id="search3">
-                                Search by Title: <input name="query3" v-model="searchQuery3">
-                        </form>
 
-                        <form id="search4">
-                                Search by Body: <input name="query4" v-model="searchQuery4">
-                        </form>
+                        <div class="menuItems">
+                                <p class="p1">  Search by Id: </p>
+                                <textarea class="filter" name="query2" v-model="searchQuery2">
+
+                        </div>
+
+
+                        <div class="menuItems">
+                                <p class="p1">Search by Title:</p>
+                                <textarea class="filter" name="query3" v-model="searchQuery3">
+
+                        </div>
+
+
+                        <div class="menuItems">
+                                <p class="p1"> Search by Body: </p>
+                                <textarea class="filter" name="query4" v-model="searchQuery4">
+
+                        </div>
+
                 </div>
 
 

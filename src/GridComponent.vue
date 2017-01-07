@@ -1,31 +1,34 @@
 <template>
-    <div>
+    <div class="container">
 
-        <form v-if="editForm"  class="form-horizontal">
-            <hr>
-            <div>
+        <div v-if="editForm" class="formDesign">
+            <form v-if="editForm">
+                <hr>
                 <div>
-                    <label>UserId</label>
-                    <input type="text" class="form-control" v-model="userId">
-                </div>
-                <div>
-                    <label>Id</label>
-                    <input type="text" class="form-control" v-model="id">
-                </div>
-                <div>
-                    <label>Title</label>
-                    <input type="text" class="form-control" v-model="title">
-                </div>
-                <div>
-                    <label>Body</label>
-                    <input type="text" class="form-control" v-model="body">
-                </div>
-                <div style="margin-top:15px">
+                    <div>
+                        <p class="p1">UserId</p>
+                        <textarea type="text" class="input1" v-model="userId">
+                    </div>
+                    <div>
+                        <p class="p1">Id</p>
+                        <textarea type="text" class="input2" v-model="id">
+                    </div>
+                    <div>
+                        <p class="p1">Title</p>
+                        <textarea type="text" class="input3" v-model="title">
+                    </div>
+                    <div>
+                        <p class="p1">Body</p>
+                        <textarea class="input4" type="text" v-model="body">
+                    </div>
+                    <div style="margin-top:15px">
 
+                    </div>
                 </div>
-            </div>
-        </form>
-        <button v-if="editForm" @click="saveNewData()">Save</button>
+            </form>
+            <button class="myButton" v-if="editForm" @click="saveNewData()">Save</button>
+            <br>
+        </div>
 
         <hr>
         <table>
@@ -47,8 +50,8 @@
                     {{entry[key]}}
                 </td>
                 <td>
-                    <button @click="removeRow(index)">Remove</button>
-                    <button @click="ispisUsers(index)">Edit</button>
+                    <button class="removeButton" @click="removeRow(index)">Remove</button>
+                    <button class="editButton" @click="editUser(index)">Edit</button>
                 </td>
 
             </tr>
@@ -60,6 +63,7 @@
                 <button class="myButton" @click="handlePrev()"> << </button>
                 <li v-for="page in numberOfPages">
                     <button class="myButton" @click="handlePage(page)"> {{page}} </button>
+
                 </li>
                 <button class="myButton" @click="handleNext()"> >> </button>
             </ul>
@@ -92,6 +96,7 @@
                 sortOrders[key] = 1
             })
             return {
+
                 pomIndex: 1,
                 userId: null,
                 id: null,
@@ -216,7 +221,7 @@
 
                 },
 
-                ispisUsers(index){
+                editUser(index){
                     this.editForm=true;
 
                     this.pomIndex = index;
