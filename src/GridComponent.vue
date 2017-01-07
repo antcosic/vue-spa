@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <form v-if="editForm"  class="form-horizontal">
             <hr>
             <div>
@@ -80,7 +81,9 @@
             data: Array,
             columns: Array,
             filterKey: String,
-            filterKeys: String
+            filterKey2: String,
+            filterKey3: String,
+            filterKey4: String
 
         },
         data() {
@@ -115,21 +118,39 @@
             filteredData: function () {
                 var sortKey = this.sortKey
                 var filterKey = this.filterKey && this.filterKey.toLowerCase()
-                var filterKeys = this.filterKeys && this.filterKeys.toLowerCase()
+                var filterKey2 = this.filterKey2 && this.filterKey2.toLowerCase()
+                var filterKey3 = this.filterKey2 && this.filterKey3.toLowerCase()
+                var filterKey4 = this.filterKey2 && this.filterKey4.toLowerCase()
                 var order = this.sortOrders[sortKey] || 1
                 var data = this.data
                 if (filterKey) {
-                    data = data.filter(function (row) {
+                    data = data.filter((row) => {
                         return Object.keys(row).some(function (key) {
                             return String(row[key]).toLowerCase().indexOf(filterKey) > -1
                         })
                     })
                 }
 
-                if (filterKeys) {
+                if (filterKey2) {
                     data = data.filter(function (row) {
                         return Object.keys(row).some(function (key) {
-                            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+                            return String(row[key]).toLowerCase().indexOf(filterKey2) > -1
+                        })
+                    })
+                }
+
+                if (filterKey3) {
+                    data = data.filter(function (row) {
+                        return Object.keys(row).some(function (key) {
+                            return String(row[key]).toLowerCase().indexOf(filterKey3) > -1
+                        })
+                    })
+                }
+
+                if (filterKey4) {
+                    data = data.filter(function (row) {
+                        return Object.keys(row).some(function (key) {
+                            return String(row[key]).toLowerCase().indexOf(filterKey4) > -1
                         })
                     })
                 }

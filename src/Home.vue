@@ -1,14 +1,21 @@
 <template>
         <div>
                 <div class="pagMenu">
-                        <form id="search">
-                                Title: <input name="query" v-model="searchQuery">
+                        <form id="search1">
+                                Search by UserId: <input name="query1" v-model="searchQuery">
                         </form>
 
-                        <form id="search">
-                                Body: <input name="query" v-model="searchQuery2">
+                        <form id="search2">
+                                Search by Id: <input name="query2" v-model="searchQuery2">
                         </form>
 
+                        <form id="search3">
+                                Search by Title: <input name="query3" v-model="searchQuery3">
+                        </form>
+
+                        <form id="search4">
+                                Search by Body: <input name="query4" v-model="searchQuery4">
+                        </form>
                 </div>
 
 
@@ -16,6 +23,9 @@
                         :data="gridData"
                         :columns="gridColumns"
                         :filter-key="searchQuery"
+                        :filter-key2="searchQuery2"
+                        :filter-key3="searchQuery3"
+                        :filter-key4="searchQuery4"
                         >
                 </demo-grid>
         </div>
@@ -34,6 +44,8 @@
                         return {
                                 searchQuery: '',
                                 searchQuery2: '',
+                                searchQuery3: '',
+                                searchQuery4: '',
                                 gridColumns: ['userId','id', 'title', 'body'],
                                 gridData: []
 
