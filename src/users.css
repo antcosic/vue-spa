@@ -81,7 +81,7 @@ h2 {
   text-align: center;
   padding-top: 20px;
 }
-.myButton {
+.Button {
   -moz-box-shadow: inset 0px 39px 0px -24px #e67a73;
   -webkit-box-shadow: inset 0px 39px 0px -24px #e67a73;
   box-shadow: inset 0px 39px 0px -24px #e67a73;
@@ -99,10 +99,10 @@ h2 {
   text-decoration: none;
   text-shadow: 0px 1px 0px #b23e35;
 }
-.myButton:hover {
+.Button:hover {
   background-color: #eb675e;
 }
-.myButton:active {
+.Button:active {
   position: relative;
   top: 1px;
 }

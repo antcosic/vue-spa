@@ -1,5 +1,32 @@
 <template>
     <div>
+        <form v-if="editForm"  class="form-horizontal">
+            <hr>
+            <div>
+                <div>
+                    <label>UserId</label>
+                    <input type="text" class="form-control" v-model="userId">
+                </div>
+                <div>
+                    <label>Id</label>
+                    <input type="text" class="form-control" v-model="id">
+                </div>
+                <div>
+                    <label>Title</label>
+                    <input type="text" class="form-control" v-model="title">
+                </div>
+                <div>
+                    <label>Body</label>
+                    <input type="text" class="form-control" v-model="body">
+                </div>
+                <div style="margin-top:15px">
+
+                </div>
+            </div>
+        </form>
+        <button v-if="editForm" @click="saveNewData()">Save</button>
+
+        <hr>
         <table>
             <thead>
             <tr>
@@ -14,13 +41,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(entry, index) in filteredData" v-if="index >= from && index < to" >
+            <tr v-for="(entry, index) in filteredData" v-if="index >= from && index < to">
                 <td v-for="key in columns">
                     {{entry[key]}}
                 </td>
                 <td>
                     <button @click="removeRow(index)">Remove</button>
-                    <button>Edit</button>
+                    <button @click="ispisUsers(index)">Edit</button>
                 </td>
 
             </tr>
@@ -29,11 +56,11 @@
         <div class="pagMenu">
 
             <ul class="pagination">
-                <button class="button" @click="handlePrev()"> << </button>
+                <button class="myButton" @click="handlePrev()"> << </button>
                 <li v-for="page in numberOfPages">
-                    <button class="button" @click="handlePage(page)"> {{page}} </button>
+                    <button class="myButton" @click="handlePage(page)"> {{page}} </button>
                 </li>
-                <button class="button" @click="handleNext()"> >> </button>
+                <button class="myButton" @click="handleNext()"> >> </button>
             </ul>
 
         </div>
@@ -52,7 +79,8 @@
         props: {
             data: Array,
             columns: Array,
-            filterKey: String
+            filterKey: String,
+            filterKeys: String
 
         },
         data() {
@@ -61,6 +89,12 @@
                 sortOrders[key] = 1
             })
             return {
+                pomIndex: 1,
+                userId: null,
+                id: null,
+                title: null,
+                body: null,
+                editForm: false,
                 page: null,
                 from: null,
                 to: null,
@@ -81,9 +115,18 @@
             filteredData: function () {
                 var sortKey = this.sortKey
                 var filterKey = this.filterKey && this.filterKey.toLowerCase()
+                var filterKeys = this.filterKeys && this.filterKeys.toLowerCase()
                 var order = this.sortOrders[sortKey] || 1
                 var data = this.data
                 if (filterKey) {
+                    data = data.filter(function (row) {
+                        return Object.keys(row).some(function (key) {
+                            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+                        })
+                    })
+                }
+
+                if (filterKeys) {
                     data = data.filter(function (row) {
                         return Object.keys(row).some(function (key) {
                             return String(row[key]).toLowerCase().indexOf(filterKey) > -1
@@ -140,7 +183,51 @@
                       this.from = this.rowsPerPage * (this.page - 1);
                       this.to = this.rowsPerPage * this.page;
                   }
-              }
+              },
+              addRow: function (index) {
+              this.editForm=true;
+                    try {
+                        this.data.splice(index + 1, 0, {});
+                        console.log(index);
+                    } catch(e){
+                        console.log(e);
+                     }
+
+                },
+
+                ispisUsers(index){
+                    this.editForm=true;
+
+                    this.pomIndex = index;
+
+                        var obj = this.data[index];
+                        this.userId = obj.userId;
+                        this.id = obj.id;
+                        this.title = obj.title;
+                        this.body = obj.body;
+                        console.log(obj.title);
+                        console.log(this.userId);
+                        console.log(this.id);
+                        console.log(this.title);
+                        console.log(this.body);
+
+
+                 },
+
+                 saveNewData(){
+                    console.log(this.pomIndex);
+                    var objTwo = this.data[this.pomIndex];
+                       console.log(objTwo);
+                    objTwo.userId= this.userId;
+                    objTwo.id= this.id;
+                    objTwo.title= this.title;
+                    objTwo.body= this.body;
+
+                    console.log( objTwo.userId);
+
+                    this.editForm=false;
+                 }
+
         }
     }
 

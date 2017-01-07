@@ -19,7 +19,7 @@
                     <td>{{ user.email}}</td>
                     <td>{{ user.address.street}}</td>
                     <td>
-                        <button class="myButton" @click="showModal(user.name, user.username, user.email, user.address.street,
+                        <button class="Button" @click="showModal(user.name, user.username, user.email, user.address.street,
                                                   user.address.suite, user.address.city, user.address.zipcode,
                                                   user.address.geo.lat, user.address.geo.lng)">
                             More

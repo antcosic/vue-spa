@@ -2,15 +2,21 @@
         <div>
                 <div class="pagMenu">
                         <form id="search">
-                                Search <input name="query" v-model="searchQuery">
+                                Title: <input name="query" v-model="searchQuery">
                         </form>
+
+                        <form id="search">
+                                Body: <input name="query" v-model="searchQuery2">
+                        </form>
+
                 </div>
 
 
                 <demo-grid
                         :data="gridData"
                         :columns="gridColumns"
-                        :filter-key="searchQuery">
+                        :filter-key="searchQuery"
+                        >
                 </demo-grid>
         </div>
 </template>

@@ -30,8 +30,8 @@
             </div>
         </modal>
 </template>
-<style>
-@import './modalBody.less';
+<style scoped>
+    @import './modalBody.less';
 </style>
 <script>
     import Modal from './Modal.vue'
