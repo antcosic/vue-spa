@@ -1,11 +1,9 @@
 <template>
     <div>
 
+        <div id="chart_div" style="width: 100%; height: 500px;"></div>
 
-
-        <h1>This is graph component</h1>
-        <div id='myChart'></div>
-
+        <h1>This is graph</h1>
     </div>
 </template>
 
@@ -14,20 +12,31 @@
 </style>
 <script>
     import * as d3 from 'd3';
+    import * as nvd3 from 'nvd3';
 
-import zingchart from 'zingchart';
 
-zingchart.render({
-    id: 'myChart',
-    data: {
-      type: 'line',
-      series: [{
-        values: [54,23,34,23,43],
-      }, {
-        values: [10,15,16,20,40]
-      }]
-    }
-  });
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
     export default {
         data(){
             return{
@@ -39,17 +48,6 @@ zingchart.render({
         created(){
             this.ispisD();
             this.ispisNvd();
-             zingchart.render({
-    id: 'myChart',
-    data: {
-      type: 'line',
-      series: [{
-        values: [54,23,34,23,43],
-      }, {
-        values: [10,15,16,20,40]
-      }]
-    }
-  });
 
         },
         methods: {
@@ -65,7 +63,7 @@ zingchart.render({
 
             },
             ispisNvd(){
-                console.log();
+                console.log(nvd3);
 
             }
 
