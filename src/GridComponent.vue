@@ -124,8 +124,8 @@
                 var sortKey = this.sortKey
                 var filterKey = this.filterKey && this.filterKey.toLowerCase()
                 var filterKey2 = this.filterKey2 && this.filterKey2.toLowerCase()
-                var filterKey3 = this.filterKey2 && this.filterKey3.toLowerCase()
-                var filterKey4 = this.filterKey2 && this.filterKey4.toLowerCase()
+                var filterKey3 = this.filterKey3 && this.filterKey3.toLowerCase()
+                var filterKey4 = this.filterKey4 && this.filterKey4.toLowerCase()
                 var order = this.sortOrders[sortKey] || 1
                 var data = this.data
                 if (filterKey) {
