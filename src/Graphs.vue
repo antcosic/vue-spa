@@ -34,6 +34,7 @@
     import Graph1 from './Graph1.vue';
 
 
+
     export default {
         data(){
             return{
@@ -47,7 +48,8 @@
         },
         components: {
             'area-chart': Graph2,
-            'line-chart': Graph1
+            'line-chart': Graph1,
+
         }
 
 
