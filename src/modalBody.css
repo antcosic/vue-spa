@@ -1,6 +1,9 @@
 label {
   font-weight: bolder;
 }
+.modal-body {
+  text-align: left;
+}
 .myButton {
   margin: 5px;
   -moz-box-shadow: inset 0px 1px 0px 0px #54a3f7;
