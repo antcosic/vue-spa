@@ -5,33 +5,20 @@
                         <div class="menuItems">
                                 <p class="p1">Search by UserId: </p>
                                 <textarea class="filter" name="query1" v-model="searchQuery">
-
                         </div>
-
-
                         <div class="menuItems">
                                 <p class="p1">  Search by Id: </p>
                                 <textarea class="filter" name="query2" v-model="searchQuery2">
-
                         </div>
-
-
                         <div class="menuItems">
                                 <p class="p1">Search by Title:</p>
                                 <textarea class="filter" name="query3" v-model="searchQuery3">
-
                         </div>
-
-
                         <div class="menuItems">
                                 <p class="p1"> Search by Body: </p>
                                 <textarea class="filter" name="query4" v-model="searchQuery4">
-
                         </div>
-
                 </div>
-
-
                 <demo-grid
                         :data="gridData"
                         :columns="gridColumns"
@@ -45,7 +32,7 @@
 </template>
 
 <style scoped>
-        @import './items.less';
+        @import '../styles/items.less';
 </style>
 <script>
 

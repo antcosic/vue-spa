@@ -1,16 +1,13 @@
 <template>
     <div style="text-align: center;">
-
-
-        <h3>Area graph</h3>
-
-        <svg id="chart1"></svg>
-
-
+        <div>
+            <h3>Area graph</h3>
+            <svg id="chart1"></svg>
+        </div>
     </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 
         text {
             font: 12px sans-serif;
@@ -20,7 +17,7 @@
         }
         svg {
             margin: 0px;
-            padding: 0px;
+            padding-left: 27%;
             height: 400px;
             width: 700px;
         }
@@ -36,7 +33,6 @@
 
            }
         },
-
 
         created(){
             var histcatexplong = [
@@ -81,33 +77,55 @@
                     "values" : [ [ 1138683600000 , 0] , [ 1141102800000 , 0] , [ 1143781200000 , 0] , [ 1146369600000 , 0] , [ 1149048000000 , 0] , [ 1151640000000 , 0] , [ 1154318400000 , 0] , [ 1156996800000 , 0] , [ 1159588800000 , 0] , [ 1162270800000 , 0] , [ 1164862800000 , 0] , [ 1167541200000 , 0] , [ 1170219600000 , 0] , [ 1172638800000 , 0] , [ 1175313600000 , 0] , [ 1177905600000 , 0] , [ 1180584000000 , 0] , [ 1183176000000 , 0] , [ 1185854400000 , 0] , [ 1188532800000 , 0] , [ 1191124800000 , 0] , [ 1193803200000 , 0] , [ 1196398800000 , 0] , [ 1199077200000 , 0] , [ 1201755600000 , 0] , [ 1204261200000 , 0] , [ 1206936000000 , 0] , [ 1209528000000 , 0] , [ 1212206400000 , 0] , [ 1214798400000 , 0] , [ 1217476800000 , 0] , [ 1220155200000 , 0] , [ 1222747200000 , 0] , [ 1225425600000 , 0] , [ 1228021200000 , 0] , [ 1230699600000 , 0] , [ 1233378000000 , 0] , [ 1235797200000 , 0] , [ 1238472000000 , 0] , [ 1241064000000 , 0] , [ 1243742400000 , 0] , [ 1246334400000 , 0] , [ 1249012800000 , 0] , [ 1251691200000 , 0] , [ 1254283200000 , 0] , [ 1256961600000 , 0] , [ 1259557200000 , 0] , [ 1262235600000 , 0] , [ 1264914000000 , 0] , [ 1267333200000 , 0] , [ 1270008000000 , 0] , [ 1272600000000 , 0] , [ 1275278400000 , 0] , [ 1277870400000 , 0] , [ 1280548800000 , 0] , [ 1283227200000 , 0] , [ 1285819200000 , 0] , [ 1288497600000 , 0] , [ 1291093200000 , 0] , [ 1293771600000 , 0] , [ 1296450000000 , 0] , [ 1298869200000 , 0] , [ 1301544000000 , 0] , [ 1304136000000 , 0] , [ 1306814400000 , 0] , [ 1309406400000 , 0] , [ 1312084800000 , 0] , [ 1314763200000 , 0] , [ 1317355200000 , 0] , [ 1320033600000 , 0] , [ 1322629200000 , 0] , [ 1325307600000 , 0] , [ 1327986000000 , 0] , [ 1330491600000 , 0] , [ 1333166400000 , 0] , [ 1335758400000 , 0] , [ 1338436800000 , 0]]
                 }
             ];
-            var colors = d3.scale.category20();
-            var chart;
-            nv.addGraph(function() {
-                chart = nv.models.stackedAreaChart()
-                    .useInteractiveGuideline(true)
-                    .x(function(d) { return d[0] })
-                    .y(function(d) { return d[1] })
-                    .controlLabels({stacked: "Stacked"})
-                    .duration(300);
-                chart.xAxis.tickFormat(function(d) { return d3.time.format('%x')(new Date(d)) });
-                chart.yAxis.tickFormat(d3.format(',.4f'));
-                chart.legend.vers('furious');
-                d3.select('#chart1')
-                    .datum(histcatexplong)
-                    .transition().duration(1000)
-                    .call(chart)
-                    .each('start', function() {
-                setTimeout(function() {
-                        d3.selectAll('#chart1 *').each(function() {
-                        if(this.__transition__)
-                            this.__transition__.duration = 1;
-                    })
-                }, 0)
-            });
-            nv.utils.windowResize(chart.update);
-                return chart;
-            });
+
+            setInterval(()=>{
+
+
+                    for (var i=0; i<histcatexplong.length; i++){
+                    for (var j=0; j<histcatexplong[i].values.length; j++){
+
+                            histcatexplong[i].values[j][0]=(Math.random() * (1400000000000 - 1100000000000) + 1100000000000);
+                            histcatexplong[i].values[j][1]=(Math.random() * (30.00000000000 - 0.00000000000) + 0.00000000000);
+                            if(histcatexplong[i].key=="Utilities"){
+                                histcatexplong[i].values[j][0]=(Math.random() * (1400000000000 - 1100000000000) + 1100000000000);
+                                histcatexplong[i].values[j][1]=0;
+                            }
+
+                    }
+                }},1000);
+            var inter = setInterval(function() {
+                                updateData();
+                                console.log(histcatexplong[0].key, histcatexplong[0].values[0][0], histcatexplong[0].values[0][1]);
+                          }, 1000);
+            function updateData(){
+                var colors = d3.scale.category20();
+                var chart;
+                nv.addGraph(function() {
+                    chart = nv.models.stackedAreaChart()
+                        .useInteractiveGuideline(true)
+                        .x(function(d) { return d[0] })
+                        .y(function(d) { return d[1] })
+                        .controlLabels({stacked: "Stacked"})
+                        .duration(300);
+                    chart.xAxis.tickFormat(function(d) { return d3.time.format('%x')(new Date(d)) });
+                    chart.yAxis.tickFormat(d3.format(',.4f'));
+                    chart.legend.vers('furious');
+                    d3.select('#chart1')
+                        .datum(histcatexplong)
+                        .transition().duration(1000)
+                        .call(chart)
+                        .each('start', function() {
+                    setTimeout(function() {
+                            d3.selectAll('#chart1 *').each(function() {
+                            if(this.__transition__)
+                                this.__transition__.duration = 1;
+                        })
+                    }, 0)
+                });
+                nv.utils.windowResize(chart.update);
+                    return chart;
+                });
+            }
         }
 
 

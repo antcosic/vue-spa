@@ -98,5 +98,5 @@
 </script>
 
 <style lang="less" scoped>
-    @import './users';
+    @import '../styles/users';
 </style>

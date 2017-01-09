@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import Users from './Users.vue'
-import Home from './Home.vue'
-import Graph from './Graphs.vue'
+import Users from './components/Users.vue'
+import Home from './components/Home.vue'
+import Graph from './components/Graphs.vue'
 
 Vue.use(VueRouter);
 

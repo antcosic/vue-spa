@@ -22,16 +22,12 @@
 export default {
   data () {
     return {
-
-
     }
   },
-
-
 }
 </script>
 
 <style lang="less" scoped>
-  @import './app';
+  @import './styles/app';
 
 </style>

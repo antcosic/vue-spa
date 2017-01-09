@@ -9,7 +9,7 @@
 </template>
 
 <style lang="less" scoped>
-@import './modal.less';
+@import '../styles/modal.less';
 </style>
 
 <script>

@@ -72,7 +72,7 @@
     </div>
 </template>
 <style scoped>
-    @import './items.less';
+    @import '../styles/items.less';
 </style>
 <script>
     import Vue from 'vue'
@@ -211,17 +211,17 @@
                   }
               },
               addRow: function (index) {
-              this.editForm=true;
+                    this.editForm=true;
                     try {
                         this.data.splice(index + 1, 0, {});
                         console.log(index);
                     } catch(e){
                         console.log(e);
-                     }
+                    }
 
-                },
+              },
 
-                editUser(index){
+              editUser(index){
                     this.editForm=true;
 
                     this.pomIndex = index;
@@ -238,21 +238,19 @@
                         console.log(this.body);
 
 
-                 },
+              },
 
-                 saveNewData(){
+              saveNewData(){
                     console.log(this.pomIndex);
                     var objTwo = this.data[this.pomIndex];
-                       console.log(objTwo);
+                    console.log(objTwo);
                     objTwo.userId= this.userId;
                     objTwo.id= this.id;
                     objTwo.title= this.title;
                     objTwo.body= this.body;
-
                     console.log( objTwo.userId);
-
                     this.editForm=false;
-                 }
+              }
 
         }
     }
