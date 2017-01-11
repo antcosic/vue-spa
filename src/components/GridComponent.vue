@@ -63,7 +63,6 @@
                 <button class="myButton" @click="handlePrev()"> << </button>
                 <li v-for="page in numberOfPages">
                     <button class="myButton" @click="handlePage(page)"> {{page}} </button>
-
                 </li>
                 <button class="myButton" @click="handleNext()"> >> </button>
             </ul>
@@ -96,7 +95,6 @@
                 sortOrders[key] = 1
             })
             return {
-
                 pomIndex: 1,
                 userId: null,
                 id: null,
